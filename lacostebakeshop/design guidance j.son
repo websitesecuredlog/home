@@ -1,0 +1,129 @@
+{
+  "project_name": "Lacoste Bakery",
+  "theme": "Light",
+  "archetype": "Elegant French Patisserie / Editorial Boutique",
+  "design_philosophy": {
+    "core_principles": [
+      "Use generous negative space to evoke luxury.",
+      "Asymmetry creates tension and interest.",
+      "No rounded corners on structural elements - use sharp geometric precision.",
+      "No food imagery as requested - rely on typography, negative space, and architectural/abstract imagery."
+    ]
+  },
+  "colors": {
+    "primary": "#F25C05",
+    "primary_hover": "#D94F04",
+    "background": "#FAF7F2",
+    "surface": "#FFFFFF",
+    "text_main": "#1A1A1A",
+    "text_muted": "#5C5C5C",
+    "accent_blue": "#002654",
+    "accent_red": "#ED2939",
+    "border": "#E5DFD3"
+  },
+  "typography": {
+    "fonts": {
+      "headings": "'Cormorant Garamond', serif",
+      "body": "'Manrope', sans-serif"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-6xl tracking-tighter leading-none font-medium text-[#1A1A1A]",
+      "h2": "text-4xl md:text-5xl tracking-tight leading-tight text-[#1A1A1A]",
+      "h3": "text-2xl md:text-3xl tracking-tight text-[#1A1A1A]",
+      "body": "text-base md:text-lg leading-relaxed text-[#5C5C5C]",
+      "label": "text-xs uppercase tracking-[0.2em] font-bold text-[#F25C05]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_gap": "py-24 md:py-32",
+    "border_radius": "rounded-none",
+    "shadows": "shadow-none, rely on 1px solid borders for separation (#E5DFD3)",
+    "grid_system": "Bento-style asymmetry for gallery, dense lists for menus with generous row gaps. Use grid-cols-1 md:grid-cols-12 for complex sections."
+  },
+  "components": {
+    "buttons": "Square edges (rounded-none), bg-[#F25C05] text-white hover:bg-[#D94F04] transition-colors duration-300 px-8 py-4 uppercase tracking-[0.1em] text-sm font-semibold. Accent buttons can use #002654.",
+    "cards": "border border-[#E5DFD3] bg-white p-8 rounded-none",
+    "navigation": "Sticky header: backdrop-blur-xl bg-[#FAF7F2]/90 border-b border-[#E5DFD3]/50. Ensure text has high contrast. Must have Logo, Menu links, and Cart CTA.",
+    "menu_list": "Elegant typographic layout. Left-aligned item name and description, flex space-between with a subtle dotted border or plain space for the price.",
+    "cart_drawer": "Right-side drawer, white background, solid borders, square buttons.",
+    "gallery": "Grid layout using the placeholder/abstract images provided. Label items as 'Place' and 'Other Food' per user request."
+  },
+  "media": {
+    "rules": "CRITICAL: NO STOCK PHOTOS OF PASTRIES OR COFFEE. Use ONLY the provided abstract/architectural images.",
+    "images": [
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/f21af61e-b45b-4235-805b-7daf243ccb7a/images/b2cd90178814393f8f0b8d8eae741dd8f70609ca43d3149aff905137b9973aef.png",
+        "description": "Abstract architectural cafe facade (orange awning)",
+        "category": "hero"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/f21af61e-b45b-4235-805b-7daf243ccb7a/images/1b5d35863bb9d200d9e1b4d85640b76751c1efaf15a86b4aee567fa4e432dfbd.png",
+        "description": "Elegant minimalist interior of a French bakery boutique",
+        "category": "about"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/f21af61e-b45b-4235-805b-7daf243ccb7a/images/cbe75f05245410cc2e293eb1f6f26c7f51d32abce884742edf4d70b5eeaa55c8.png",
+        "description": "Abstract fluid art texture (cream, orange, navy, red)",
+        "category": "gallery_other_food"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/f21af61e-b45b-4235-805b-7daf243ccb7a/images/b8e4642f8e2e1f578a01e678da31bd11ebb230e9e9077b673e5bd25dab81c358.png",
+        "description": "Minimalist placeholder graphic for gallery",
+        "category": "gallery_place"
+      }
+    ]
+  },
+  "data_content": {
+    "bakery_info": {
+      "name": "Lacoste Bakery",
+      "address": "4421 De Zavala Rd, San Antonio, TX 78249",
+      "phone": "(210) 758-4007"
+    },
+    "menu": {
+      "Pastry": [
+        {"name": "Croissant", "price": "$4.20"},
+        {"name": "Chocolate Croissant", "price": "$4.30"},
+        {"name": "Almond Croissant", "price": "$5.00"},
+        {"name": "Bow Tie", "price": "$5.50"},
+        {"name": "Suisse", "price": "$5.40"},
+        {"name": "Stripe", "price": "$5.50"},
+        {"name": "Danish", "price": "$5.65"}
+      ],
+      "Coffee": [
+        {"name": "Americano", "price": "$2.60"},
+        {"name": "Cappuccino", "price": "$4.40"},
+        {"name": "Latte", "price": "$4.40"},
+        {"name": "Espresso Double", "price": "$3.00"},
+        {"name": "Regular Coffee", "price": "$1.50"},
+        {"name": "Green Matcha", "price": "$5.20"},
+        {"name": "Flavor Your Coffee", "price": "$0.50"}
+      ],
+      "Drinks": [
+        {"name": "Green Tea", "price": "$1.20"},
+        {"name": "Milk", "price": "$2.20"},
+        {"name": "Chocolate Milk", "price": "$2.20"},
+        {"name": "Topo Chico", "price": "$3.00"},
+        {"name": "Hot Chocolate", "price": "$4.00"}
+      ],
+      "Bread": [
+        {"name": "Baguette", "price": "$3.00"},
+        {"name": "Loaf", "price": "$7.00"}
+      ],
+      "Savory": [
+        {"name": "Quiche Lorraine", "price": "$8.50", "description": "Comes with side green salad with balsamic vinaigrette"},
+        {"name": "Croissant Bechamel", "price": "$8.50", "description": "Comes with side green salad with balsamic vinaigrette"}
+      ]
+    }
+  },
+  "testing_requirements": "All interactive and key informational elements MUST include a 'data-testid' attribute (e.g., data-testid='add-to-cart-button', data-testid='menu-item-croissant').",
+  "instructions_to_main_agent": [
+    "Install and use lucide-react for icons.",
+    "Install Google Fonts 'Cormorant Garamond' and 'Manrope'.",
+    "Implement a fully functional Add to Cart and Cart Drawer (e-commerce lite).",
+    "Use Shadcn UI for standard complex components (Drawer, Dialog), but override styles to match the 'rounded-none', sharp, elegant aesthetic.",
+    "DO NOT USE ANY FOOD IMAGERY. STRICTLY use the provided media URLs.",
+    "Sections needed: Hero, Menu, Gallery, Location/Hours, About, Footer.",
+    "Use 'orange' (#F25C05) as the primary brand color, with navy blue (#002654) and red (#ED2939) as subtle accents (e.g., thin border lines or small decorative elements) to hint at the French flag."
+  ]
+}
