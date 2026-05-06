@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lacoste Bakery - Fresh Baked Goods</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #F2994A;
+            --dark-orange: #E8853A;
+            --light-orange: #FFF4E6;
+            --navy-blue: #1B2B4A;
+            --white: #FFFFFF;
+            --cream: #F9F5F0;
+            --text-dark: #2C1810;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--cream);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            /* Background image with overlay */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('pic.02');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--navy-blue);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--navy-blue);
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-orange);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--navy-blue);
+        }
+
+        .orange-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-orange), var(--dark-orange));
+            margin: 1rem auto;
+        }
+
+        /* About */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Menu */
+        .menu {
+            background: var(--cream);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h4 {
+            color: var(--navy-blue);
+        }
+
+        .price {
+            color: var(--primary-orange);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-orange);
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-blue);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <img src="pic.01" alt="Lacoste Bakery" class="logo-img">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Lacoste Bakery</h1>
+            <p>Freshly baked goods made with love every morning. Experience the taste of tradition in San Antonio.</p>
+            <div>
+                <a href="#menu" class="btn">View Our Menu</a>
+                <a href="#contact" class="btn btn-outline">Visit Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <div class="orange-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" alt="Bakery">
+                </div>
+                <div class="about-content">
+                    <h3>Baked with Passion</h3>
+                    <p>At Lacoste Bakery, we craft fresh, delicious baked goods daily using traditional techniques and the finest ingredients.</p>
+                    <p>From our signature breads to delicate pastries, everything is made from scratch with love.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+                <div class="orange-line"></div>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>French Baguette</h4>
+                        <span class="price">$4.50</span>
+                    </div>
+                    <p>Crispy crust, soft interior</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Croissants</h4>
+                        <span class="price">$3.50</span>
+                    </div>
+                    <p>Buttery, flaky layers</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Sourdough</h4>
+                        <span class="price">$6.99</span>
+                    </div>
+                    <p>Naturally fermented</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Custom Cakes</h4>
+                        <span class="price">From $35</span>
+                    </div>
+                    <p>Made to order</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Food</h2>
+                <div class="orange-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="01.jpg" alt="Food 1"></div>
+                <div class="gallery-item"><img src="02.jpg" alt="Food 2"></div>
+                <div class="gallery-item"><img src="03.jpg" alt="Food 3"></div>
+                <div class="gallery-item"><img src="04.jpg" alt="Food 4"></div>
+                <div class="gallery-item"><img src="05.jpg" alt="Food 5"></div>
+                <div class="gallery-item"><img src="06.jpg" alt="Food 6"></div>
+                <div class="gallery-item"><img src="07.jpg" alt="Food 7"></div>
+                <div class="gallery-item"><img src="08.jpg" alt="Food 8"></div>
+                <div class="gallery-item"><img src="09.jpg" alt="Food 9"></div>
+                <div class="gallery-item"><img src="10.jpg" alt="Food 10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <div class="orange-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-item">
+                        <i class="fas fa-location-dot"></i>
+                        <strong>Address:</strong><br>
+                        4421 De Zavala Rd, San Antonio, TX 78249
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <strong>Phone:</strong><br>
+                        (210) 758-4007
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <strong>Hours:</strong><br>
+                        Mon-Sun: 6:30 AM - 3:30 PM
+                    </div>
+                </div>
+                <div>
+                    <a href="https://maps.app.goo.gl/CUWbNW7Pe4XDV7o86" target="_blank" class="btn">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Lacoste Bakery. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+
+</body>
+</html>
