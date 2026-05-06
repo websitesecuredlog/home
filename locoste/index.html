@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lacoste Bakery | Artisan Baked Goods</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --sage: #9CAF88;
+            --sage-dark: #7A8B6E;
+            --cream: #FAF7F0;
+            --terracotta: #E07A5F;
+            --charcoal: #3D405B;
+            --sand: #F2CC8F;
+            --white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation - Floating Style */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section - Asymmetric Layout */
+        .hero {
+            margin-top: 100px;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('pic.02');
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            padding: 4rem;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--sage);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero-content h1 span {
+            color: var(--terracotta);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(224, 122, 95, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--sand);
+            color: var(--charcoal);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--charcoal);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About - Card Layout */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-card.large {
+            grid-column: span 2;
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .about-card.large h3,
+        .about-card.large p {
+            color: var(--white);
+        }
+
+        .about-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Menu - Modern Cards */
+        .menu {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .menu-card-header {
+            background: var(--sage);
+            padding: 1.5rem;
+            color: var(--white);
+        }
+
+        .menu-card-header h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-card-header .price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-family: 'DM Serif Display', serif;
+        }
+
+        .menu-card-body {
+            padding: 1.5rem;
+        }
+
+        .menu-card-body p {
+            color: var(--charcoal);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery - Masonry Style */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 300px;
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4),
+        .gallery-item:nth-child(6) {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(61, 64, 91, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-family: 'DM Serif Display', serif;
+        }
+
+        /* Contact - Split Layout */
+        .contact {
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--sand);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .map-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .map-box i {
+            font-size: 4rem;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+        }
+
+        .map-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .map-box p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer - Minimal */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--white);
+        }
+
+        .social-links a:hover {
+            background: var(--terracotta);
+            transform: translateY(-3px);
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                opacity: 0.3;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card.large {
+                grid-column: span 1;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 250px;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4),
+            .gallery-item:nth-child(6) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <img src="pic.01" alt="Lacoste Bakery" class="logo-img">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Est. 2015</span>
+            <h1>Welcome to <span>Lacoste</span> Bakery</h1>
+            <p>Freshly baked goods made with love every morning. Experience the taste of tradition in San Antonio.</p>
+            <div class="btn-group">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> View Menu
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-location-dot"></i> Visit Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Story</span>
+                <h2>Crafted with Passion</h2>
+                <p>Every morning, our bakers arrive before dawn to create something special</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card large">
+                    <div class="about-icon">
+                        <i class="fas fa-wheat-awn"></i>
+                    </div>
+                    <h3>Traditional Techniques</h3>
+                    <p>At Lacoste Bakery, we believe in the art of traditional baking. Using time-honored techniques and the finest ingredients, we craft each item with care and precision. From our signature sourdough to delicate pastries, everything is made from scratch daily.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Made with Love</h3>
+                    <p>Every creation is handcrafted with attention to detail</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Fresh Daily</h3>
+                    <p>Baked fresh every morning at 6:30 AM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Delicious Offerings</span>
+                <h2>Our Menu</h2>
+                <p>Freshly baked goodness available every day</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h4>French Baguette</h4>
+                        <div class="price">$4.50</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <p>Crispy crust, soft interior, traditional French style baking</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-header" style="background: var(--terracotta);">
+                        <h4>Croissants</h4>
+                        <div class="price">$3.50</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <p>Buttery, flaky layers, baked to golden perfection</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-header" style="background: var(--sand); color: var(--charcoal);">
+                        <h4>Sourdough Loaf</h4>
+                        <div class="price">$6.99</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <p>Naturally fermented, tangy flavor, perfect texture</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-header" style="background: var(--charcoal);">
+                        <h4>Custom Cakes</h4>
+                        <div class="price">From $35</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <p>Birthday, wedding, special occasions - made to order</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Our Food</h2>
+                <p>A delicious selection of our freshly baked goods</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="01.jpg" alt="Bakery Item 01">
+                    <div class="gallery-overlay"><span>01</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="02.jpg" alt="Bakery Item 02">
+                    <div class="gallery-overlay"><span>02</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="03.jpg" alt="Bakery Item 03">
+                    <div class="gallery-overlay"><span>03</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="04.jpg" alt="Bakery Item 04">
+                    <div class="gallery-overlay"><span>04</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="05.jpg" alt="Bakery Item 05">
+                    <div class="gallery-overlay"><span>05</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="06.jpg" alt="Bakery Item 06">
+                    <div class="gallery-overlay"><span>06</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="07.jpg" alt="Bakery Item 07">
+                    <div class="gallery-overlay"><span>07</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="08.jpg" alt="Bakery Item 08">
+                    <div class="gallery-overlay"><span>08</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="09.jpg" alt="Bakery Item 09">
+                    <div class="gallery-overlay"><span>09</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="10.jpg" alt="Bakery Item 10">
+                    <div class="gallery-overlay"><span>10</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: var(--sand);">Get In Touch</span>
+                <h2>Visit Us Today</h2>
+                <p>We'd love to see you at our bakery</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-location-dot"></i>
+                        <h4>Address</h4>
+                        <p>4421 De Zavala Rd<br>San Antonio, TX 78249</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>(210) 758-4007</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Hours</h4>
+                        <p>Monday - Sunday<br>6:30 AM - 3:30 PM</p>
+                    </div>
+                </div>
+                <div class="map-box">
+                    <i class="fas fa-map-location-dot"></i>
+                    <h3>Find Us</h3>
+                    <p>Conveniently located in San Antonio</p>
+                    <a href="https://maps.app.goo.gl/CUWbNW7Pe4XDV7o86" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2026 Lacoste Bakery. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--terracotta);"></i> in San Antonio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.style.position = 'absolute';
+            nav.style.top = '100%';
+            nav.style.left = '0';
+            nav.style.right = '0';
+            nav.style.background = 'white';
+            nav.style.flexDirection = 'column';
+            nav.style.padding = '2rem';
+            nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            nav.style.borderRadius = '20px';
+            nav.style.marginTop = '1rem';
+        });
+
+        // Scroll effect for nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+
+</body>
+</html>
